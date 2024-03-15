@@ -1,0 +1,6 @@
+@WebApiGraphClient_HostAddress = http://localhost:5034
+
+GET {{WebApiGraphClient_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
