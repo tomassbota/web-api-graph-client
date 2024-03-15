@@ -1,6 +1,22 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"))
+         .EnableTokenAcquisitionToCallDownstreamApi()
+             .AddMicrosoftGraph(builder.Configuration.GetSection("MicrosoftGraph"))
+             .AddInMemoryTokenCaches();
+
+builder.Services.AddAuthorization();
+
+//builder.Services.AddAuthorization(options =>
+//{
+//    // By default, all incoming requests will be authorized according to the default policy
+//    options.FallbackPolicy = options.DefaultPolicy;
+//});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
