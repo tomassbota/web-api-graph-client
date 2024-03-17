@@ -20,5 +20,23 @@ namespace WebApiGraphClient.Controllers
 
             return Ok(users);
         }
+
+        [HttpGet("/getTeam/{teamId}")]
+        public async Task<IActionResult> GetTeam(string teamId)
+        {
+            return Ok(new NotImplementedException());
+        }
+
+        [HttpGet("/getChannel/{teamId}/{channelId}")]
+        public async Task<IActionResult> GetChannel(string teamId, string channelId)
+        {
+            return Ok(new NotImplementedException());
+        }
+
+        [HttpPost("/sendMessage")]
+        public async Task<IActionResult> SendMessage()
+        {
+            return Ok(new NotImplementedException());
+        }
     }
 }
